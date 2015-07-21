@@ -10,7 +10,7 @@
 #include <dlfcn.h>
 #include <stdio.h>
 #include <sys/syscall.h>    // for SYS_xxx definitions
-
+#include <unistd.h>
 #define W2A(wstr)   x3::w2a(wstr).c_str()
 
 static std::string  s_err;

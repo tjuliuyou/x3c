@@ -67,11 +67,20 @@ inline int strcat_s(char *str, size_t, const char *src)
 inline int wcscat_s(wchar_t *str, size_t, const wchar_t *src)
     { return wcscat(str, src) ? 0 : -1; }
 
+//inline wchar_t * _wcslwr_s(wchar_t *str)
+//    { for (wchar_t* p = str; *p; p++) towlower(*p); return str; }
+//inline wchar_t * _wcsupr_s(wchar_t *str)
+//    { for (wchar_t* p = str; *p; p++) towupper(*p); return str; }
 inline wchar_t * _wcslwr_s(wchar_t *str)
-    { for (wchar_t* p = str; *p; p++) towlower(*p); return str; }
+{ for (wchar_t* p = str; *p; ++p)
+        *p = towlower(*p);
+    return str;
+}
 inline wchar_t * _wcsupr_s(wchar_t *str)
-    { for (wchar_t* p = str; *p; p++) towupper(*p); return str; }
-
+{ for (wchar_t* p = str; *p; ++p)
+        *p = towupper(*p);
+    return str;
+}
 #if defined(_WIN32)
 
 inline int _ltoa_s(long value, char *str, size_t, int radix)

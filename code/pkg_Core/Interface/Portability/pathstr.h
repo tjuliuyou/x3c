@@ -6,6 +6,7 @@
 #ifndef X3_PORTABILITY_PATHSTR_IMPL_H
 #define X3_PORTABILITY_PATHSTR_IMPL_H
 
+
 static inline bool IsPathSlash(wchar_t c)
 {
     return L'\\' == c || L'/' == c;
@@ -23,8 +24,8 @@ char* PathFindFileNameA(const char* path)
 
 wchar_t* PathFindFileNameW(const wchar_t* path)
 {
-    const wchar_t* p1 = path ? wcsrchr(path, L'\\') : NULL;
-    const wchar_t* p2 = path ? wcsrchr(path, L'/') : NULL;
+  const wchar_t* p1 = path ? ::wcsrchr(path, L'\\') : NULL;
+  const wchar_t* p2 = path ? ::wcsrchr(path, L'/') : NULL;
 
     p1 = !p1 || (p2 && p2 > p1) ? p2 : p1;
 
@@ -33,7 +34,7 @@ wchar_t* PathFindFileNameW(const wchar_t* path)
 
 bool PathIsRelativeW(const wchar_t* path)
 {
-    return wcsrchr(path, L':') == NULL && path[0] != L'\\' && path[0] != L'/';
+  return ::wcsrchr(path, L':') == NULL && path[0] != L'\\' && path[0] != L'/';
 }
 
 void PathStripPathW(wchar_t* path)

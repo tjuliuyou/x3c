@@ -20,9 +20,9 @@ all:
 	$(CC) $(C_FLAGS_SO) -o $(PLUGINS_DIR)/libPluginManager.so *.o $(LIBS)	
 endif
 
-
 clean:
 	rm -rf *.so
+	rm -rf *.dylib
 	rm -rf *.o
 
 
